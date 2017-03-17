@@ -4,8 +4,8 @@
 <div class='container'>
   <div class='row'>
     <div class='col-xs-4'>
-    <h1>Signup!</h1>
-    <%= simple_form_for :sessions, class:'form-horizontal' do |f| %>
+    <h1>Login!</h1>
+    <%= simple_form_for :session, class:'form-horizontal' do |f| %>
       <%= f.input :name %>
       <%= f.input :password %>
       <%= f.button :submit, "Login!", class: "btn btn-primary" %>

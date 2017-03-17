@@ -1,0 +1,14 @@
+
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-4'>
+    <h1>Add Photo to Gallery</h1>
+    <%= simple_form_for @photo, class:'form-horizontal' do |f| %>
+      <%= f.input :caption %>
+      <%= f.input :image %>
+      <%= f.button :submit, "Add Photo", class: "btn btn-primary" %>
+    <% end %>
+   </div>
+  </div>
+</div>

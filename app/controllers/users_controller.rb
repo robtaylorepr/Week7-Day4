@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     before_action :require_user, only: [:edit, :update]
     before_action :require_self, only: [:edit, :update]
 
+
     def index
     end
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :password)
     end
 
     def find_user
