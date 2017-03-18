@@ -4,7 +4,7 @@
   <div class='row'>
     <div class='col-xs-4'>
     <h1>Creating new Gallery</h1>
-    <%= simple_form_for @gall, url: new_user_gall_path, class:'form-horizontal' do |f| %>
+    <%= simple_form_for `[current_user, @gall]`, class:'form-horizontal' do |f| %>
       <%= f.input :title, required: true %>
       <%= f.input :description %>
       <%= f.button :submit, "Create Gallery!", class: "btn btn-primary" %>
