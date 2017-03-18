@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'users#marketing'
   # resources :sessions
-  resources :photos
-  resources :galls
-  resources :users
-  post "/galls/new"  => 'galls#create'
+
+  resources :users do
+    resources :galls do
+      resources :photos
+    end
+  end
+
+  # post "/galls/new"  => 'galls#create'
   post "/users/new" => 'users#create'
   get "/login" => 'sessions#new', as: :login
   post "/login" => 'sessions#create'

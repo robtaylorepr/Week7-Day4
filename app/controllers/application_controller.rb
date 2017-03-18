@@ -1,18 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   helper_method :current_user
 
-  def new
-  end
-
-  def index
-    if current_user
-      render :new
-    else
-      render :new
-    end
-
-  end
+  # def new
+  # end
+  #
+  # def index
+  #   if current_user
+  #     render :new
+  #   else
+  #     render :new
+  #   end
+  #
+  # end
 
 
 

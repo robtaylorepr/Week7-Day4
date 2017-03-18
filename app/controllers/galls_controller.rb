@@ -10,6 +10,7 @@ class GallsController < ApplicationController
 
   def create
     @gall = Gall.new(gall_params)
+    @gall.user = current_user
     if @gall.save
       flash[:success] = "Success, New Gallery Created"
       redirect_to new_photo_path

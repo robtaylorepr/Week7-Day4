@@ -9,6 +9,8 @@
       <%= f.input :image %>
       <%= f.button :submit, "Add Photo", class: "btn btn-primary" %>
     <% end %>
+    <%= button_to "View this Gallery", gall_path, method: 'get', id: @gall.id %>show
+    <%= button_to "View list of Galleries", galls_path, method: 'get' %> index
    </div>
   </div>
 </div>
