@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:danger] = "Incorrect credentials. Please try again."
-      redirect_to :login
+      redirect_to login_path
     end
   end
 

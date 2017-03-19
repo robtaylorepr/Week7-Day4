@@ -3,6 +3,4 @@ class Photo < ApplicationRecord
   has_one    :user, through: :galls
   mount_uploader :image, CarrierwaveUploader
 
-
-
 end

@@ -1,6 +1,16 @@
 
 
-<div>
-  <p>Marketing hype goes here</p>
-  <p>Now with Green Bleeching Crystals !!!!</p>
+<div class='row'>
+  <div class='col-xs-12 text-center'>
+    <p>Gallerys for user <%= current_user.name %></p>
+    <% if current_user.galls.count > 0 %>
+      <% currrent_user.galls.each do |gall| %>
+        <p><%= gall.title %></p>
+      <% end %>
+    <% else %>
+      <p>No Gallerys yet</p>
+    <% end %>
+    <%= link_to "Create Gallery", new_gall_path(current_user), :method => 'get', class: "btn btn-primary"%>
+    <%= link_to "View list of Galleries", galls_path(current_user), :method => 'get', class: "btn btn-primary"%>
+  </div>
 </div>

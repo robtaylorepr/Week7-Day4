@@ -1,9 +1,14 @@
 <div class='row'>
   <div class='col-xs-12 text-center'>
     <h1>List of Galleries for user <%= @user.name %> </h1>
-    <h3>Gallery 1 stuff here</h3>
-    <h3>Gallery 2 stuff here</h3>
-    <h3>Gallery 3 stuff here</h3>
-    <%= link_to "Create new Gallery", new_user_gall_path(@user), class: "btn btn-primary" %>
+    <% @galls = current_user.galls %>
+    <% if @galls %>
+      <% @galls.each do |gall| %>
+        <p><%= gall.title %></p>
+      <% end %>
+    <% else %>
+      <p>No existing Galleries</p>
+    <% end %>
+    <%= link_to "Create new Gallery", new_gall_path(@user), class: "btn btn-primary" %>
   </div>
 </div>

@@ -2,8 +2,8 @@
 
 <div class='row'>
   <div class='col-xs=12 text-center'>
-    <p>
-      There are <%= @users.count %> users on this system
-    </p>
+    <% @user.galls.each do |gall|
+      <p><%= gall.title %></p>
+    <% end %>
   </div>
 </div>

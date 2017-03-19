@@ -6,6 +6,8 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    # figure out which allery to place the photo
+    # current_user.galls.last << @photo
     if @photo.save
       flash[:success] = "Success, New Photo added to your gallery"
       redirect_to new_photo_path

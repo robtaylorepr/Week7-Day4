@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     def marketing
     end
-    
+
     def index
       @users = User.all
     end
@@ -16,15 +16,16 @@ class UsersController < ApplicationController
     end
 
     def new
+      @user = User.new
     end
 
     def create
       @user = User.new(user_params)
       if @user.save
         # send them an email
-        # UserMailer.signup(@user).deliver
+        UserMailer.signup(@user).deliver
         session[:user_id] = @user.id
-        redirect_to @user
+        redirect_to galls_path(@user)
         # redirect_to "/users/#{@user.id}"
         # redirect_to controller: "users", action: "show", id: @user.id
 
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
         #   - "#{class_name}_path(id: thing.id)"
       else
         flash[:danger] = "Incorrect credentials. Please try again."
-        redirect_to new_user_path
+        redirect_to login_path
       end
     end
 
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name, :password)
+      params.require(:user).permit(:name, :password, :email)
     end
 
     def find_user
