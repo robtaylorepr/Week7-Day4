@@ -1,16 +1,18 @@
 class PhotosController < ApplicationController
+  # before_action
 
   def new
     @photo = Photo.new
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    # figure out which allery to place the photo
-    # current_user.galls.last << @photo
-    if @photo.save
-      flash[:success] = "Success, New Photo added to your gallery"
-      redirect_to new_photo_path
+    @gall = Gall.find(params[:id])
+    @photo = @gall.photos.new(photo_params)
+    if current_user == @photo.user
+      if @photo.save
+        flash[:success] = "Success, New Photo added to your gallery"
+        redirect_to new_photo_path
+      end
     else
       flash[:danger] = "Incorrect Gallery title/description. Please try again."
       redirect_to new_gall_path
@@ -18,7 +20,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:caption, :image, :gall)
+    params.require(:photo).permit(:caption, :image, :id)
   end
 
 end

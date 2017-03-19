@@ -1,9 +1,19 @@
 
 <div class='row'>
-  <div class='col-xs-12'>
-    <p>Gallery</p>
-    <% @gall.photos.each do |photo| %>
+  <div class='col-xs-12 text-center'>
+    <p>Gallery <% @gall.title%> by user <%= current_user.name %> </p>
+    <% if @gall.photos.count > 0 %>
+      <% @gall.photos.each do |photo| %>
       <p><%= photo.caption %></p>
+      <% end %>
+    <% else %>
+      <p>No photos in Gallery</p>
     <% end %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-xs-12 text-center'>
+    <%=link_to 'Add Photo', new_photo_path(@gall), :method => 'get', class: "btn btn-primary"%>
   </div>
 </div>

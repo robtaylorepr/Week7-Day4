@@ -4,13 +4,17 @@
   <div class='col-xs-12 text-center'>
     <p>Gallerys for user <%= current_user.name %></p>
     <% if current_user.galls.count > 0 %>
-      <% currrent_user.galls.each do |gall| %>
-        <p><%= gall.title %></p>
+      <% current_user.galls.each do |gall| %>
+        <%=link_to gall.title, gall_path(gall), :method => 'get', class: "btn btn-primary"%>
       <% end %>
     <% else %>
       <p>No Gallerys yet</p>
     <% end %>
-    <%= link_to "Create Gallery", new_gall_path(current_user), :method => 'get', class: "btn btn-primary"%>
-    <%= link_to "View list of Galleries", galls_path(current_user), :method => 'get', class: "btn btn-primary"%>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-xs-12 text-center'>
+    <%=link_to "Create Gallery", new_gall_path(current_user), :method => 'get', class: "btn btn-primary"%>
   </div>
 </div>

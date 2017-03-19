@@ -13,7 +13,7 @@ class GallsController < ApplicationController
     @gall.user = current_user
     if @gall.save
       flash[:success] = "Success, New Gallery Created"
-      redirect_to new_photo_path(current_user, @gall)
+      redirect_to galls_path(current_user, @gall)
     else
       flash[:danger] = "Incorrect Gallery title/description. Please try again."
       redirect_to new_user_gall_path(@gall)
@@ -22,7 +22,7 @@ class GallsController < ApplicationController
 
   def show
     # binding.pry
-    @gall = Gall.find(params[:gall_id])
+    @gall = Gall.find(params[:id])
   end
 
   def gall_params
