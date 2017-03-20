@@ -1,0 +1,7 @@
+<%= render @gall %>
+
+<%= simple_form_for :share, url: share_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :gall_id, value: @gall.id, as: :hidden %>
+  <%= f.button :submit, "Share this!", class: "btn btn-secondary" %>
+<% end %>

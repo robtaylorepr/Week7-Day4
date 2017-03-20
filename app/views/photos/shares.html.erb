@@ -1,0 +1,7 @@
+<%= render @photo %>
+
+<%= simple_form_for :share, url: share_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :photo_id, value: @photo.id, as: :hidden %>
+  <%= f.button :submit, "Share this!", class: "btn btn-primary" %>
+<% end %>

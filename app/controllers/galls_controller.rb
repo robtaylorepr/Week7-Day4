@@ -2,6 +2,11 @@ class GallsController < ApplicationController
 
   def index
     @gall = Gall.all
+    if current_user
+      render 'index.html.erb'
+    else
+      render 'marketing.html.erb'
+    end
   end
 
   def new
@@ -24,6 +29,19 @@ class GallsController < ApplicationController
     # binding.pry
     @gall = Gall.find(params[:id])
   end
+
+  def destroy
+    current_user.galls.find(params[:id]).destroy
+    redirect_to galls_path
+  end
+
+  # def is_owner
+  #   @chirp = current_user.chirps.find_by(id: params[:id])
+  #   unless @chirp && @chirp.user == current_user
+  #     flash[:danger] = "That's not your chirp, bucky"
+  #     redirect_to :root
+  #   end
+  # end
 
   def gall_params
     params.require(:gall).permit(:title, :description)

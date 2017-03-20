@@ -10,8 +10,12 @@ class PhotosController < ApplicationController
     @photo = @gall.photos.new(photo_params)
     if current_user == @gall.user
       if @photo.save
-        flash[:success] = "Success, New Photo added to your gallery"
-        redirect_to galls_path
+        if params[:photo][:hit_me] == 0
+          flash[:success] = "Success, New Photo added to your gallery"
+          redirect_to gall_path
+        else
+          redirect_to new_photo_path
+        end
       end
     else
       flash[:danger] = "Incorrect Gallery title/description. Please try again."
@@ -20,7 +24,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:caption, :image, :id)
+    params.require(:photo).permit(:caption, :image)
   end
 
 end

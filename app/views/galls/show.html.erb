@@ -1,13 +1,14 @@
 
 <div class='row'>
   <div class='col-xs-12 text-center'>
-    <p>Gallery <% @gall.title%> by user <%= current_user.name %> </p>
+    <p>Gallery <%= @gall.title%> by user <%= current_user.name %> </p>
     <% if @gall.photos.count > 0 %>
       <% @gall.photos.each do |photo| %>
-      <%= link_to image_tag(photo.image.versions[:thumb]) %>
-      <p><%= photo.caption %></p>
-      <%= photo.created_at.strftime("%A %b. %e %l:%m%P") %>
-      <p>----------------------</p>
+          <%= link_to image_tag(photo.image.versions[:thumb]) %>
+          <%= link_to 'Delete', photo_path, method: 'delete', class: "btn btn-outline btn-sm" %>
+          <p><%= photo.caption %></p>
+          <small><%= photo.created_at.strftime("%A %b. %e %l:%m%P") %></small>
+          <p>------------------------------------</p>
       <% end %>
     <% else %>
       <p>No photos in Gallery</p>
@@ -17,6 +18,7 @@
 
 <div class='row'>
   <div class='col-xs-12 text-center'>
-    <%=link_to 'Add Photo', new_photo_path(@gall), :method => 'get', class: "btn btn-primary"%>
+    <%=link_to 'Add Photo', new_photo_path(@gall), :method => 'get', class: "btn btn-primary btn-sm"%>
+    <%=link_to 'Share', share_path(@gall.id), method: 'get', class: "btn btn-primary btn-sm"%>
   </div>
 </div>

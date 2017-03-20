@@ -4,7 +4,10 @@
     <% @galls = current_user.galls %>
     <% if @galls %>
       <% @galls.each do |gall| %>
-        <p><%= gall.title %></p>
+        <div class='row'>
+          <%=link_to "#{gall.title}", gall_path(gall.id), class: "btn btn-outline butn-sm"%>
+          <%=link_to "Delete", gall_path(gall.id), method: 'delete', class: "btn btn-outline btn-sm"%>
+        </div>
       <% end %>
     <% else %>
       <p>No existing Galleries</p>

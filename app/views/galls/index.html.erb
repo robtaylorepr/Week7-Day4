@@ -5,7 +5,10 @@
     <p>Gallerys for user <%= current_user.name %></p>
     <% if current_user.galls.count > 0 %>
       <% current_user.galls.each do |gall| %>
-        <%=link_to "#{gall.title}", gall_path(gall.id), class: "btn btn-primary"%>
+        <div class='row'>
+          <%=link_to "#{gall.title}", gall_path(gall.id), class: "btn btn-outline butn-sm"%>
+          <%=link_to "Delete", gall_path(gall.id), method: 'delete', class: "btn btn-outline btn-sm"%>
+        </div>
       <% end %>
     <% else %>
       <p>No Gallerys yet</p>
@@ -15,6 +18,6 @@
 
 <div class='row'>
   <div class='col-xs-12 text-center'>
-    <%=link_to "Create Gallery", new_gall_path(current_user), :method => 'get', class: "btn btn-primary"%>
+    <%=link_to "Create Gallery", new_gall_path(current_user), :method => 'get', class: "btn btn-primary btn-sm"%>
   </div>
 </div>

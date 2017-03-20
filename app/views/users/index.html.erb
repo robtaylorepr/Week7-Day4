@@ -2,8 +2,11 @@
 
 <div class='row'>
   <div class='col-xs=12 text-center'>
-    <% @user.galls.each do |gall|
-      <p><%= gall.title %></p>
+    <p>List of Users</p>
+    <% @users.each do |user| %>
+      <div class='row'>
+        <%= "#{user.name}" %>
+      </div>
     <% end %>
   </div>
 </div>
