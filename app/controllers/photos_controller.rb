@@ -8,10 +8,10 @@ class PhotosController < ApplicationController
   def create
     @gall = Gall.find(params[:id])
     @photo = @gall.photos.new(photo_params)
-    if current_user == @photo.user
+    if current_user == @gall.user
       if @photo.save
         flash[:success] = "Success, New Photo added to your gallery"
-        redirect_to new_photo_path
+        redirect_to galls_path
       end
     else
       flash[:danger] = "Incorrect Gallery title/description. Please try again."

@@ -4,7 +4,10 @@
     <p>Gallery <% @gall.title%> by user <%= current_user.name %> </p>
     <% if @gall.photos.count > 0 %>
       <% @gall.photos.each do |photo| %>
+      <%= link_to image_tag(photo.image.versions[:thumb]) %>
       <p><%= photo.caption %></p>
+      <%= photo.created_at.strftime("%A %b. %e %l:%m%P") %>
+      <p>----------------------</p>
       <% end %>
     <% else %>
       <p>No photos in Gallery</p>

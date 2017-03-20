@@ -5,7 +5,7 @@
     <p>Gallerys for user <%= current_user.name %></p>
     <% if current_user.galls.count > 0 %>
       <% current_user.galls.each do |gall| %>
-        <%=link_to gall.title, gall_path(gall), :method => 'get', class: "btn btn-primary"%>
+        <%=link_to "#{gall.title}", gall_path(gall.id), class: "btn btn-primary"%>
       <% end %>
     <% else %>
       <p>No Gallerys yet</p>
