@@ -42,7 +42,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'figaro'
-gem 'attachinary'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
