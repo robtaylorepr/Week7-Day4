@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170318191800) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "galls", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at",  null: false
@@ -41,4 +44,6 @@ ActiveRecord::Schema.define(version: 20170318191800) do
     t.string   "email"
   end
 
+  add_foreign_key "galls", "users"
+  add_foreign_key "photos", "galls"
 end

@@ -3,6 +3,7 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @gall  = Gall.find(params[:gall_id])
   end
 
   def create
