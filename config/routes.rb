@@ -2,23 +2,9 @@ Rails.application.routes.draw do
   root 'galls#index'
   # resources :sessions
 
-  # resources :users do
-  #   resources :galls do
-  #     resources :photos
-  #   end
-  # end
-
-  resources :users, shallow: true do
-    member do
-
-      resources :galls do
-        member do
-
-          resources :photos
-
-        end
-      end
-
+  resources :users do
+    resources :galls do
+      resources :photos
     end
   end
 
