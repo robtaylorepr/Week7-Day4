@@ -6,7 +6,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @gall = Gall.find(params[:id])
+    binding.pry
+    @gall = Gall.find(params[:gall_id])
     @photo = @gall.photos.new(photo_params)
     if current_user == @gall.user
       if @photo.save
