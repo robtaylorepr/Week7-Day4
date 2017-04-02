@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # resources :sessions
 
   resources :users do
-    resources :galls do
-      resources :photos
-    end
+  resources :galls do
+    resources :photos
+  end
   end
 
   # post "/galls/new"  => 'galls#create'
