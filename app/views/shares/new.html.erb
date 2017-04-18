@@ -1,8 +1,7 @@
 
 
-<%= simple_form_for :share, url: share_path do |f| %>
+<%= simple_form_for :share, url: (@photo ? photo_shares_path(@photo) : gall_shares_path(@gall) ) do |f| %>
   <%= f.input :email %>
-  <%= f.input :gall_id, value: @gall.id, as: :hidden %>
   <%= f.button :submit, "Share this!", class: "btn btn-secondary" %>
 <% end %>
 

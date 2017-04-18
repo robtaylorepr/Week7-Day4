@@ -21,7 +21,7 @@ class GallsController < ApplicationController
       redirect_to galls_path(current_user, @gall)
     else
       flash[:danger] = "Incorrect Gallery title/description. Please try again."
-      redirect_to new_user_gall_path(@gall)
+      redirect_to new_gall_path(@gall)
     end
   end
 
@@ -44,7 +44,7 @@ class GallsController < ApplicationController
   # end
 
   def gall_params
-    params.require(:gall).permit(:title, :description)
+    params.require(:gall).permit(:title, :description, :id)
   end
 
 end

@@ -6,12 +6,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-    binding.pry
-    @gall = Gall.find(params[:gall_id])
+    @gall = Gall.find(params[:id])
     @photo = @gall.photos.new(photo_params)
     if current_user == @gall.user
       if @photo.save
-        if params[:photo][:hit_me] == 0
+        if params[:photo][:hit_me] == '0'
           flash[:success] = "Success, New Photo added to your gallery"
           redirect_to gall_path
         else
